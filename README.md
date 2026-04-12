@@ -1,62 +1,95 @@
-# Magic-Maze
-"A web-based maze game controlled by hand gestures using a webcam, replacing traditional mouse and keyboard inputs."
+# 🖐 GestureMaze — Webcam-Controlled Maze Game
 
-A touchless, interactive maze game that uses **hand gestures captured through a webcam** to control gameplay. Instead of using a mouse or keyboard, players navigate a ball through the maze using intuitive gestures such as **hand tilt**, **pinch**, and **two-hand zoom**.
-
----
-
-## 🌟 Features
-
-- 🖐️ **Gesture-Based Controls**
-  - **Hand Tilt** – Move the ball in the maze.
-  - **Pinch Gesture** – Select levels and restart the game.
-  - **Two-Hand Zoom** – Zoom in and out of the maze view.
-
-- 🎮 **Interactive Gameplay**
-  - Multiple maze levels with increasing difficulty.
-  - Collision detection with maze walls.
-  - Goal detection and level completion.
-  - Score and timer display.
-
-- 📷 **Webcam Integration**
-  - Real-time hand tracking using **MediaPipe Hands**.
-  - Optional webcam preview for user feedback.
-
-- 💻 **Modern Web Technologies**
-  - Built using **HTML**, **CSS**, and **JavaScript**.
-  - Rendering with **HTML5 Canvas** (or Three.js for 3D).
-  - Gesture recognition powered by **MediaPipe**.
+Control a glowing ball through neon mazes using only your hand gestures via webcam.
 
 ---
 
-## 🛠️ Technologies Used
+## 🚀 Quick Start
 
-| Technology | Purpose |
-|------------|---------|
-| HTML5 & CSS3 | User Interface |
-| JavaScript | Game Logic |
-| MediaPipe Hands | Hand Gesture Recognition |
-| WebRTC (`getUserMedia`) | Webcam Access |
-| HTML5 Canvas / Three.js | Graphics Rendering |
+**Just open `index.html` in Chrome or Edge** — no build step, no server needed.
+
+> ⚠️ Camera access requires a browser that supports `getUserMedia`. Chrome/Edge recommended.
 
 ---
 
-## 🎯 How It Works
+## 🎮 Controls
 
-1. The webcam captures real-time video using `getUserMedia`.
-2. **MediaPipe Hands** detects hand landmarks.
-3. Gestures are interpreted:
-   - Tilt → Ball movement.
-   - Pinch → Selection/Click.
-   - Two-hand distance → Zoom in/out.
-4. The game logic updates the ball’s position and checks for collisions.
-5. The player completes the level by reaching the goal.
+### Hand Gestures (primary)
+| Gesture | Action |
+|---|---|
+| **Hand Tilt** | Tilt your palm left/right/up/down → ball rolls in that direction |
+| **Pinch** (thumb + index) | Confirm selection on menus / dismiss overlays |
+| **Open Palm** (5 fingers spread) | Pause / Resume the game |
+| **Two-Hand Zoom** | Spread both hands apart → zoom in · bring together → zoom out |
+
+### Keyboard (fallback)
+| Key | Action |
+|---|---|
+| `←` `→` `↑` `↓` | Move ball |
+| `P` | Pause / Resume |
 
 ---
 
-## 🚀 Getting Started
+## 📐 How Gesture Detection Works
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/your-username/gesture-controlled-maze.git
-cd gesture-controlled-maze
+- Uses **MediaPipe Hands** loaded from CDN (no install needed)
+- Detects up to 2 hands with 21 landmarks each
+- **Tilt**: Vector from wrist to average knuckle position mapped to velocity
+- **Pinch**: Euclidean distance between thumb tip and index tip (threshold: 0.06)
+- **Palm open**: Average finger spread from wrist (threshold: 0.25)
+- **Zoom**: Distance between centers of both detected hands (delta → zoom factor)
+
+---
+
+## 🏗 Architecture
+
+```
+index.html          ← All-in-one (HTML + CSS + JS)
+│
+├── Gesture Engine  ← MediaPipe Hands, landmark drawing, gesture classifier
+├── Game Loop       ← requestAnimationFrame, physics, collision detection
+├── Maze Builder    ← Recursive backtracking algorithm (seeded per level)
+├── Renderer        ← HTML5 Canvas with neon glow effects
+├── Sound Engine    ← Web Audio API procedural sounds
+└── Particle System ← Trail and celebration effects
+```
+
+---
+
+## 🧩 Levels
+
+| # | Name | Grid | Time | Difficulty |
+|---|---|---|---|---|
+| 1 | EASY | 9×9 | 120s | ⭐ |
+| 2 | MEDIUM | 13×13 | 90s | ⭐⭐ |
+| 3 | HARD | 17×17 | 70s | ⭐⭐⭐ |
+| 4 | EXPERT | 21×21 | 55s | ⭐⭐⭐⭐ |
+| 5 | MASTER | 25×25 | 40s | 💀 |
+
+---
+
+## ⚙️ Settings
+
+- **Sensitivity slider** (top-right in game): Adjusts gesture-to-velocity mapping (1–10)
+- **Hide/Show Cam** button: Toggle the webcam preview panel
+- High scores are saved automatically in `localStorage`
+
+---
+
+## 🌐 Browser Compatibility
+
+| Browser | Gesture | Keyboard |
+|---|---|---|
+| Chrome 90+ | ✅ | ✅ |
+| Edge 90+ | ✅ | ✅ |
+| Firefox | ⚠️ MediaPipe may be slower | ✅ |
+| Safari | ❌ MediaPipe not supported | ✅ |
+
+---
+
+## 💡 Tips
+
+- Keep your hand **clearly visible** and well-lit for best tracking
+- Use **small, deliberate tilts** — the game uses smooth interpolation
+- The **red timer** flashes when under 10 seconds
+- Pinch is **cooldown-gated** (0.5s) to prevent accidental repeats
