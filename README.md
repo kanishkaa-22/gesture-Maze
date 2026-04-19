@@ -78,25 +78,6 @@ magic-maze/
 
 ---
 
-## 🚀 Running Locally
-
-```bash
-git clone https://github.com/your-username/magic-maze.git
-cd magic-maze
-```
-
-Run using a local server:
-
-```bash
-# Python
-python -m http.server 8000
-```
-
-Then open:
-👉 http://localhost:8000
-
----
-
 ## ⚠️ Requirements
 
 * Modern browser (Chrome recommended)
@@ -131,7 +112,7 @@ This project demonstrates key **Computer Graphics and Animation** concepts:
 
 ## 👩‍💻 Author
 
-**Kani**
+**Kanishkaa**
 First-Year CSE Student
 Passionate about AI, Graphics & Interactive Systems 🚀
 
