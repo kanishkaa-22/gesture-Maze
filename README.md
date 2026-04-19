@@ -1,29 +1,155 @@
 # 🖐 GestureMaze — Webcam-Controlled Maze Game
 
-Control a glowing ball through neon mazes using only your hand gestures via webcam.
+**GestureMaze** is a futuristic, touchless maze game where players control movement using **hand gestures via webcam** instead of a mouse or keyboard.
+
+Navigate through increasingly difficult mazes using natural hand motions like **tilt, pinch, and zoom** — creating a unique Human-Computer Interaction experience.
 
 ---
 
-## 🚀 Quick Start
+## 🎮 Demo
 
-**Just open `index.html` in Chrome or Edge** — no build step, no server needed.
-
-> ⚠️ Camera access requires a browser that supports `getUserMedia`. Chrome/Edge recommended.
+🔗 Live: https://magic-maze.vercel.app
 
 ---
 
-## 🎮 Controls
+## 🌟 Features
 
-### Hand Gestures (primary)
-| Gesture | Action |
-|---|---|
-| **Hand Tilt** | Tilt your palm left/right/up/down → ball rolls in that direction |
-| **Pinch** (thumb + index) | Confirm selection on menus / dismiss overlays |
-| **Open Palm** (5 fingers spread) | Pause / Resume the game |
-| **Two-Hand Zoom** | Spread both hands apart → zoom in · bring together → zoom out |
+### 🖐️ Gesture Controls
 
-### Keyboard (fallback)
-| Key | Action |
+* **Tilt Hand** → Move the ball
+* **Pinch (🤏)** → Select / Confirm
+* **Two-Hand Zoom (🤲)** → Zoom in/out
+* **Open Palm (✋)** → Pause / Resume
+
+### 🎮 Gameplay
+
+* Multiple difficulty levels (Easy → Chaos 💀)
+* Real-time physics-based movement
+* Collision detection with walls
+* Timer + Score system
+* High score tracking (localStorage)
+
+### 🎨 Visual Experience
+
+* Neon cyberpunk UI design
+* Particle effects & glow animations
+* Smooth transitions and HUD
+* Responsive canvas rendering
+
+---
+
+## 🧠 Technologies Used
+
+| Technology      | Purpose              |
+| --------------- | -------------------- |
+| HTML5 Canvas    | Game rendering       |
+| JavaScript      | Game logic           |
+| MediaPipe Hands | Gesture detection    |
+| WebRTC          | Webcam access        |
+| CSS (Neon UI)   | Styling & animations |
+| Web Audio API   | Sound effects        |
+
+---
+
+## 🕹️ How to Play
+
+1. Click **"Grant Camera Access"**
+2. Allow webcam permission
+3. Select a level using:
+
+   * 👆 Pinch gesture or mouse
+4. Control the ball:
+
+   * Tilt your hand to move
+   * Avoid walls
+   * Reach the glowing goal ⭐
+
+---
+
+## 🧩 Project Structure
+
+```
+magic-maze/
+│
+├── index.html        # Main game file
+├── README.md         # Documentation
+└── assets/           # (optional images/sounds)
+```
+
+---
+
+## 🚀 Running Locally
+
+```bash
+git clone https://github.com/your-username/magic-maze.git
+cd magic-maze
+```
+
+Run using a local server:
+
+```bash
+# Python
+python -m http.server 8000
+```
+
+Then open:
+👉 http://localhost:8000
+
+---
+
+## ⚠️ Requirements
+
+* Modern browser (Chrome recommended)
+* Webcam access enabled
+* Internet (for MediaPipe CDN)
+
+---
+
+## 🎓 CGA Concepts Used
+
+This project demonstrates key **Computer Graphics and Animation** concepts:
+
+* 2D Rendering (Canvas)
+* Real-time Animation (requestAnimationFrame)
+* Transformations (translation, scaling/zoom)
+* Collision Detection
+* Procedural Maze Generation
+* Interactive Graphics (gesture input)
+* Particle Systems & Visual Effects
+
+---
+
+## 🔮 Future Improvements
+
+* 🧊 3D Maze using Three.js
+* 🤖 AI-based difficulty adaptation
+* 🏆 Online leaderboard
+* 📱 Mobile gesture support
+* 🎭 Character/Theme switching
+
+---
+
+## 👩‍💻 Author
+
+**Kani**
+First-Year CSE Student
+Passionate about AI, Graphics & Interactive Systems 🚀
+
+---
+
+## ⭐ Support
+
+If you like this project:
+
+⭐ Star this repo
+🍴 Fork it
+📢 Share it
+
+---
+
+## 📜 License
+
+MIT License
 |---|---|
 | `←` `→` `↑` `↓` | Move ball |
 | `P` | Pause / Resume |
